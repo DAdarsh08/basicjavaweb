@@ -2,7 +2,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
+<!DOCTYPE html>                                               
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,7 +25,7 @@
            }
            if(request.getParameter("a")==null)
            {
-               System.out.println("first");
+               System.out.println("first");   
            }
            else{
                System.out.println("postback");
@@ -34,7 +34,7 @@
               
             if(option.equals("sub"))
            {
-             diff=num1-num2;
+             diff=num1-num2; 
              s="checked";
            }
              else if(option.equals("add")){

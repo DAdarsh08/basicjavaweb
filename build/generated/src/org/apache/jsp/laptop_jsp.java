@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class checkjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class laptop_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -44,8 +44,7 @@ public final class checkjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>                                               \n");
+      out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
@@ -54,67 +53,40 @@ public final class checkjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        ");
 
-           int num1=0;
-           int num2=0;
-           int diff=0;
-           String s="";
-           String s2="";
-           String option="";
-           if(request.getParameter("option")==null)
-           {
-               option="sub";
-           }
-           else{
-               option="add";
-           }
-           if(request.getParameter("a")==null)
-           {
-               System.out.println("first");   
-           }
-           else{
-               System.out.println("postback");
-               num1=Integer.parseInt(request.getParameter("a"));
-               num2=Integer.parseInt(request.getParameter("b"));
-              
-            if(option.equals("sub"))
-           {
-             diff=num1-num2; 
-             s="checked";
-           }
-             else if(option.equals("add")){
-               diff=num1+num2;
-               s2="checked";
-               
-           }
-        
-           }
-           
-          
+            String lap = "";
+
+            //String fr = "";
+            if (request.getParameter("HP") == null) {
+                System.out.println("first");
+            } else {
+
+                if (request.getParameter("HP") == "HP") {
+                    lap = "HP";
+
+                } 
+                else{
+                    lap="DELL";
+                }
+                
+            }
         
       out.write("\n");
       out.write("        <form>\n");
-      out.write("            <input type=\"number\" name=\"a\" value=\"");
-      out.print(num1);
-      out.write("\">\n");
+      out.write("            HP:<input type=\"checkbox\" name=\"HP\" value=\"HP\">\n");
       out.write("            <br>\n");
-      out.write("            <input type=\"number\" name=\"b\" value=\"");
-      out.print(num2);
-      out.write("\">\n");
+      out.write("            DELL:<input type=\"checkbox\" name=\"DELL\" value=\"DELL\">\n");
       out.write("            <br>\n");
-      out.write("            ADD/SUB:<input type=\"checkbox\" value=\"add\" name=\"option\" ");
-      out.print(s2);
-      out.write(">\n");
-      out.write("            <br>\n");
-      out.write("            <input type=\"submit\" value=\"submit\">\n");
-      out.write("                   \n");
-      out.write("                   \n");
-      out.write("            \n");
-      out.write("               \n");
+      out.write("\n");
+      out.write("            <!--            pendrive:<input type=\"checkbox\" name=\"free\" value=\"\">\n");
+      out.write("                        <br>\n");
+      out.write("                        mouse:<input type=\"checkbox\" name=\"free\" value=\"\">\n");
+      out.write("                        \n");
+      out.write("                        <br>-->\n");
+      out.write("            <input type=\"submit\" value=\"submit\" >\n");
       out.write("        </form>\n");
-      out.write("            <h1>the value is : ");
-      out.print(diff);
-      out.write("</h1>\n");
-      out.write("         \n");
+      out.write("        the laptop you are selected is : ");
+      out.print(lap);
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

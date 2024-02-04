@@ -3,8 +3,13 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.sql.PreparedStatement;
+import oracle.jdbc.OracleDriver;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.SQLException;
 
-public final class checkjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class insertmarks_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -45,7 +50,11 @@ public final class checkjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("<!DOCTYPE html>                                               \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
@@ -54,67 +63,61 @@ public final class checkjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <body>\n");
       out.write("        ");
 
-           int num1=0;
-           int num2=0;
-           int diff=0;
-           String s="";
-           String s2="";
-           String option="";
-           if(request.getParameter("option")==null)
-           {
-               option="sub";
-           }
-           else{
-               option="add";
-           }
-           if(request.getParameter("a")==null)
-           {
-               System.out.println("first");   
-           }
-           else{
-               System.out.println("postback");
-               num1=Integer.parseInt(request.getParameter("a"));
-               num2=Integer.parseInt(request.getParameter("b"));
-              
-            if(option.equals("sub"))
-           {
-             diff=num1-num2; 
-             s="checked";
-           }
-             else if(option.equals("add")){
-               diff=num1+num2;
-               s2="checked";
-               
-           }
-        
-           }
-           
-          
+            int marks = 0;
+            String name = "";
+            if (request.getParameter("marks") == null) {
+                System.out.println("first");
+            } else {
+                marks = Integer.parseInt(request.getParameter("marks"));
+
+                name = request.getParameter("name");
+
+                try {
+                    String url = "jdbc:oracle:thin:@localhost:1521:xe";
+                    String username = "system";
+                    String password = "wrong";
+                    DriverManager.registerDriver(new OracleDriver());
+                    Connection connection = DriverManager.getConnection(url, username, password);
+                    out.println(connection);
+                    PreparedStatement statement = connection.prepareStatement("insert into marksheet (marks, name) values (?, ?)");
+                    
+                   
+                    statement.setString(1,""+ marks); // Set the first parameter (marks)
+                     statement.setString(2, name);
+                     
+                   
+                    int n = statement.executeUpdate();
+                    out.println(n);
+                } catch (SQLException ex) {
+                    out.println(ex);
+                }
+
+            }
+
+
         
       out.write("\n");
+      out.write("\n");
       out.write("        <form>\n");
-      out.write("            <input type=\"number\" name=\"a\" value=\"");
-      out.print(num1);
+      out.write("            Enter marks <input type=\"number\" name=\"marks\" value=\"");
+      out.print(marks);
       out.write("\">\n");
       out.write("            <br>\n");
-      out.write("            <input type=\"number\" name=\"b\" value=\"");
-      out.print(num2);
+      out.write("            Enter name  <input type=\"text\" name=\"name\" value=\"");
+      out.print(name);
       out.write("\">\n");
       out.write("            <br>\n");
-      out.write("            ADD/SUB:<input type=\"checkbox\" value=\"add\" name=\"option\" ");
-      out.print(s2);
-      out.write(">\n");
-      out.write("            <br>\n");
-      out.write("            <input type=\"submit\" value=\"submit\">\n");
-      out.write("                   \n");
-      out.write("                   \n");
-      out.write("            \n");
-      out.write("               \n");
+      out.write("            <input type=\"submit\" value=\"submit\"> \n");
       out.write("        </form>\n");
-      out.write("            <h1>the value is : ");
-      out.print(diff);
+      out.write("        <h1>The marks is : ");
+      out.print(marks);
       out.write("</h1>\n");
-      out.write("         \n");
+      out.write("        <Br>\n");
+      out.write("        <h1>The name is : ");
+      out.print(name);
+      out.write("</h1>\n");
+      out.write("\n");
+      out.write("\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
