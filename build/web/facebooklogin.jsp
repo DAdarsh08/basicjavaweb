@@ -56,9 +56,14 @@
                     if (rs.next() == true) {
                         ans = "your login is right";
                     }
-                    // ResultSetMetaData rsmd = rs.getMetaData();
+                    if (ans.equals("your login is right")) {
 
+                        response.sendRedirect("homepage.jsp");
+                    }
+
+                    // ResultSetMetaData rsmd = rs.getMetaData();
                     int n = statement.executeUpdate();
+
                     out.println(n);
                 } catch (SQLException ex) {
                     out.println(ex);
@@ -70,21 +75,21 @@
 
 
 
-    <form>
+        <form>
 
 
-        <input type="text" name="mobile" value="" placeholder="Mobile number">
-        <br>
-        <input type="password" name="pass" value="" placeholder="enter password">
-        <br>
-        <input type="submit" value="Login">
+            <input type="text" name="mobile" value="" placeholder="Mobile number">
+            <br>
+            <input type="password" name="pass" value="" placeholder="enter password">
+            <br>
+            <input type="submit" value="Login">
 
 
-    </form>
+        </form>
 
-    <h1><%=ans%></h1>    
+        <h1><%=ans%></h1>    
 
 
 
-</body>
+    </body>
 </html>

@@ -4,6 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/D:/basicjavaweb/web/updatejsp.jsp</file>
+            <file>file:/D:/basicjavaweb/web/facebook.jsp</file>
+            <file>file:/D:/basicjavaweb/web/facebooklogin.jsp</file>
             <file>file:/D:/basicjavaweb/web/select.jsp</file>
             <file>file:/D:/basicjavaweb/web/update.jsp</file>
             <file>file:/D:/basicjavaweb/web/index.html</file>
@@ -14,6 +16,7 @@
             <file>file:/D:/basicjavaweb/src/java/myservlet/Add.java</file>
             <file>file:/D:/basicjavaweb/web/postadd.jsp</file>
             <file>file:/D:/basicjavaweb/web/optionjsp.jsp</file>
+            <file>file:/D:/basicjavaweb/web/homepage.jsp</file>
             <file>file:/D:/basicjavaweb/web/radio.jsp</file>
             <file>file:/D:/basicjavaweb/web/newhtml.html</file>
             <file>file:/D:/basicjavaweb/web/insertmarks.jsp</file>

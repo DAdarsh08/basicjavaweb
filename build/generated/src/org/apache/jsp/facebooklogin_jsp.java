@@ -108,9 +108,14 @@ public final class facebooklogin_jsp extends org.apache.jasper.runtime.HttpJspBa
                     if (rs.next() == true) {
                         ans = "your login is right";
                     }
-                    // ResultSetMetaData rsmd = rs.getMetaData();
+                    if (ans.equals("your login is right")) {
 
+                        response.sendRedirect("homepage.jsp");
+                    }
+
+                    // ResultSetMetaData rsmd = rs.getMetaData();
                     int n = statement.executeUpdate();
+
                     out.println(n);
                 } catch (SQLException ex) {
                     out.println(ex);
@@ -123,25 +128,25 @@ public final class facebooklogin_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("    <form>\n");
+      out.write("        <form>\n");
       out.write("\n");
       out.write("\n");
-      out.write("        <input type=\"text\" name=\"mobile\" value=\"\" placeholder=\"Mobile number\">\n");
-      out.write("        <br>\n");
-      out.write("        <input type=\"password\" name=\"pass\" value=\"\" placeholder=\"enter password\">\n");
-      out.write("        <br>\n");
-      out.write("        <input type=\"submit\" value=\"Login\">\n");
+      out.write("            <input type=\"text\" name=\"mobile\" value=\"\" placeholder=\"Mobile number\">\n");
+      out.write("            <br>\n");
+      out.write("            <input type=\"password\" name=\"pass\" value=\"\" placeholder=\"enter password\">\n");
+      out.write("            <br>\n");
+      out.write("            <input type=\"submit\" value=\"Login\">\n");
       out.write("\n");
       out.write("\n");
-      out.write("    </form>\n");
+      out.write("        </form>\n");
       out.write("\n");
-      out.write("    <h1>");
+      out.write("        <h1>");
       out.print(ans);
       out.write("</h1>    \n");
       out.write("\n");
       out.write("\n");
       out.write("\n");
-      out.write("</body>\n");
+      out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
