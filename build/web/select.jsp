@@ -39,7 +39,7 @@
                     int n = rsmd.getColumnCount();
                     for (int i = 1; i <= n; i++) {
                 %>
-                <th><%=rsmd.getColumnLabel(i)%></th>
+                <th><%=rsmd.getColumnLabel(i)%></th >
                 <%
                     }
                 %>
