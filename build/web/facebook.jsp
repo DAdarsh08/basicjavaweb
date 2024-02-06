@@ -43,15 +43,16 @@
                 mobile_number = request.getParameter("mobile");
                 pass = request.getParameter("pass");
                 cpass = request.getParameter("confirmpass");
-                if (pass.equals(cpass)) {
-                    ans = "Correct password";
+               
 
-                }
+                
                 date = request.getParameter("date");
                 month = request.getParameter("month");
                 year = request.getParameter("year");
                 dateans = date + "-" + month + "-" + year;
                 gender = request.getParameter("gen");
+                 if (pass.equals(cpass)) {
+                    ans = "Correct password";
 
                 try {
                     String url = "jdbc:oracle:thin:@localhost:1521:xe";
@@ -74,6 +75,8 @@
                 } catch (SQLException ex) {
                     out.println(ex);
                 }
+                }
+                
 
             }
 
