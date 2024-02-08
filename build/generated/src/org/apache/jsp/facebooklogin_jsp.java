@@ -81,6 +81,7 @@ public final class facebooklogin_jsp extends org.apache.jasper.runtime.HttpJspBa
             String mobile = "";
             String pass = "";
             String ans = "Your login is wrong";
+            
 
             if (request.getParameter("mobile") == null) {
                 System.out.println("first time");
@@ -105,13 +106,17 @@ public final class facebooklogin_jsp extends org.apache.jasper.runtime.HttpJspBa
                     statement.setString(2, pass);
 
                     ResultSet rs = statement.executeQuery();
-                    if (rs.next() == true) {
+                    
+                    
+                    
+                    if (rs.next()) {
                         ans = "your login is right";
-                    }
-                    if (ans.equals("your login is right")) {
+                        String name=""+rs.getObject("firstname");   
+                        session.setAttribute("mobile",mobile); 
+                        session.setAttribute("name",name); 
 
                         response.sendRedirect("homepage.jsp");
-                    }
+                    } 
 
                     // ResultSetMetaData rsmd = rs.getMetaData();
                     int n = statement.executeUpdate();

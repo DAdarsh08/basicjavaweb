@@ -1,8 +1,4 @@
-<%-- 
-    Document   : facebooklogin
-    Created on : 6 Feb, 2024, 2:45:34 PM
-    Author     : adarsh
---%>
+
 <%@page import="java.sql.ResultSetMetaData"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
@@ -29,6 +25,7 @@
             String mobile = "";
             String pass = "";
             String ans = "Your login is wrong";
+            
 
             if (request.getParameter("mobile") == null) {
                 System.out.println("first time");
@@ -53,13 +50,17 @@
                     statement.setString(2, pass);
 
                     ResultSet rs = statement.executeQuery();
-                    if (rs.next() == true) {
+                    
+                    
+                    
+                    if (rs.next()) {
                         ans = "your login is right";
-                    }
-                    if (ans.equals("your login is right")) {
+                        String name=""+rs.getObject("firstname");   
+                        session.setAttribute("mobile",mobile); 
+                        session.setAttribute("name",name); 
 
                         response.sendRedirect("homepage.jsp");
-                    }
+                    } 
 
                     // ResultSetMetaData rsmd = rs.getMetaData();
                     int n = statement.executeUpdate();

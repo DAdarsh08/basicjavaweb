@@ -12,6 +12,19 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <%
+            String name="";
+            if(session.getAttribute("name")==null)
+            {
+                response.sendRedirect("facebooklogin.jsp");
+            }
+            else{
+                name=(String)session.getAttribute("name");
+            }
+        %>
+        
+        <h1>Welcome <%=name%> </h1>
+        
+        <a href="logout.jsp" >Logout</a>
     </body>
 </html>
