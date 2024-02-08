@@ -43,40 +43,37 @@
                 mobile_number = request.getParameter("mobile");
                 pass = request.getParameter("pass");
                 cpass = request.getParameter("confirmpass");
-               
 
-                
                 date = request.getParameter("date");
                 month = request.getParameter("month");
                 year = request.getParameter("year");
                 dateans = date + "-" + month + "-" + year;
                 gender = request.getParameter("gen");
-                 if (pass.equals(cpass)) {
+                if (pass.equals(cpass)) {
                     ans = "Correct password";
 
-                try {
-                    String url = "jdbc:oracle:thin:@localhost:1521:xe";
-                    String username = "system";
-                    String password = "wrong";
-                    DriverManager.registerDriver(new OracleDriver());
-                    Connection connection = DriverManager.getConnection(url, username, password);
-                    out.println(connection);
-                    PreparedStatement statement = connection.prepareStatement("insert into users ( firstname, surname,mobile,pass ,dob,gender) values (?,?,?,?,?,?)");
+                    try {
+                        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+                        String username = "system";
+                        String password = "wrong";
+                        DriverManager.registerDriver(new OracleDriver());
+                        Connection connection = DriverManager.getConnection(url, username, password);
+                        out.println(connection);
+                        PreparedStatement statement = connection.prepareStatement("insert into users ( firstname, surname,mobile,pass ,dob,gender) values (?,?,?,?,?,?)");
 
-                    statement.setString(1, first_name); // Set the first parameter (marks)
-                    statement.setString(2, sur_name);
-                    statement.setString(3, mobile_number);
-                    statement.setString(4, pass);
-                    statement.setString(5, dateans);
-                    statement.setString(6, gender);
+                        statement.setString(1, first_name); // Set the first parameter (marks)
+                        statement.setString(2, sur_name);
+                        statement.setString(3, mobile_number);
+                        statement.setString(4, pass);
+                        statement.setString(5, dateans);
+                        statement.setString(6, gender);
 
-                    int n = statement.executeUpdate();
-                    out.println(n);
-                } catch (SQLException ex) {
-                    out.println(ex);
+                        int n = statement.executeUpdate();
+                        out.println(n);
+                    } catch (SQLException ex) {
+                        out.println(ex);
+                    }
                 }
-                }
-                
 
             }
 

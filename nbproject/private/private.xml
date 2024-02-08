@@ -5,10 +5,9 @@
         <group>
             <file>file:/D:/basicjavaweb/web/logout.jsp</file>
             <file>file:/D:/basicjavaweb/web/facebooklogin.jsp</file>
-            <file>file:/D:/basicjavaweb/web/sessionremove.jsp</file>
+            <file>file:/D:/basicjavaweb/web/facebook.jsp</file>
+            <file>file:/D:/basicjavaweb/web/mainface.jsp</file>
             <file>file:/D:/basicjavaweb/web/homepage.jsp</file>
-            <file>file:/D:/basicjavaweb/web/sessionview.jsp</file>
-            <file>file:/D:/basicjavaweb/web/sessionstore.jsp</file>
         </group>
     </open-files>
 </project-private>
